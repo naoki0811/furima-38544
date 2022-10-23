@@ -2,11 +2,11 @@
 
 ## users(ユーザー情報） テーブル
 
-| Column             | Type   | Options       
+| Column             | Type   | Options     
 | ------------------ | ------ | ------------------------- |
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false, unique: true |
-| nickname           | string | null: false, unique: true |
+| nickname           | string | null: false               |
 | first_name         | string | null: false               |
 | family_name        | string | null: false               |
 | first_name_kana    | string | null: false               |
@@ -25,11 +25,11 @@
 | ------------------ | ---------- | ------------------------------ |
 | product_name       | string     | null: false                    |
 | description        | text       | null: false                    |
-| category           | integer    | null: false                    |
-| situation          | integer    | null: false                    |
-| shopping_cost      | integer    | null: false                    |
-| prefecture         | integer    | null: false                    |
-| days               | integer    | null: false                    |
+| category_id        | integer    | null: false                    |
+| situation_id       | integer    | null: false                    |
+| shopping_cost_id   | integer    | null: false                    |
+| prefecture_id      | integer    | null: false                    |
+| day_id             | integer    | null: false                    |
 | price              | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
 
@@ -44,7 +44,7 @@
 | Column             | Type       | Options                        |
 | ------------------ | -----------| -------------------------------|
 | post_code          | string     | null: false                    |
-| prefecture         | string     | null: false                    |
+| prefecture_id      | integer    | null: false                    |
 | city               | string     | null: false                    |
 | address            | string     | null: false                    |
 | build              | string     |                                |
@@ -54,7 +54,6 @@
 
 ### Association
 
--belongs_to :user
 -has_one :purchase
 
 ## purchase(購入記録)テーブル
