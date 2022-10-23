@@ -54,7 +54,7 @@
 
 ### Association
 
--has_one :purchase
+-belongs_to :purchase
 
 ## purchase(購入記録)テーブル
 
