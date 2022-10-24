@@ -11,15 +11,15 @@
 | family_name        | string | null: false               |
 | first_name_kana    | string | null: false               |
 | family_name_kana   | string | null: false               |
-| birth_day          | date   | null: false               |
+| birth_day          | string | null: false               |
 
 ### Association
 
--has_many :products
+-has_many :items
 -has_many :purchases
 
 
-## products(商品情報） テーブル
+## items(商品情報） テーブル
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
@@ -67,6 +67,6 @@
 ### Association
 
 -belongs_to :user
--belongs_to :product
+-belongs_to :item
 -has_one :destination
 
