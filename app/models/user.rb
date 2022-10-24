@@ -5,7 +5,8 @@ class User < ApplicationRecord
   
   with_options presence: true do
     validates :nickname, :birth_day, :password_confirmation
-    validates :first_name, :family_name, format: { with: /\A[ぁ-んァ-ン一-龥々]/, message: "は全角ひらがな、全角カタカナ、漢字で入力して下さい" }
+    validates :first_name, :family_name, format: { with: /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/
+    , message: "は全角ひらがな、全角カタカナ、漢字で入力して下さい" }
     validates :family_name_kana, :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: "は全角カタカナで入力して下さい" }
   end
   validates :password, :password_confirmation,
