@@ -8,11 +8,11 @@ class Item < ApplicationRecord
   validates :shopping_cost_id, numericality: { other_than: 0 , message: "can't be blank"}
   validates :prefecture_id, numericality: { other_than: 0 , message: "can't be blank"}
   validates :shipping_id, numericality: { other_than: 0 , message: "can't be blank"}
-  validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }, format: { with: /\A[-]?[0-9]+(\.[0-9]+)?\z/, message: 'は整数部分3桁小数部分3桁で入力してください' }
   validates :image, presence: true
 
   belongs_to :user
-  has_one :purchase
+  #has_one :purchase
   
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
