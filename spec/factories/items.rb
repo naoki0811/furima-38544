@@ -7,8 +7,7 @@ FactoryBot.define do
     shopping_cost_id     {1}
     prefecture_id        {1}
     shipping_id          {1}
-    price                {"9999"}
-    image                {Faker::Lorem.sentence}
+    price                {9999}
     association :user
 
     after(:build) do |item|

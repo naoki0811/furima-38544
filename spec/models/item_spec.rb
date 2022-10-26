@@ -98,9 +98,9 @@ RSpec.describe Item, type: :model do
       end
 
       it 'priceが¥9,999,999以上では出品できない' do
-        @item.price = 10,000,000
+        @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price can't be blank")
+        expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
       end
 
       it 'priceは半角数字のみしか出品できない' do
@@ -113,6 +113,12 @@ RSpec.describe Item, type: :model do
         @item.image = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Image can't be blank")
+      end
+
+      it 'user情報が紐づいていないと出品できない'do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("User must exist")
       end
     end
   end
