@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe OrderDestination, type: :model do
   before do
     user = FactoryBot.create(:user)
-    #item = FactoryBot.build(:item)
-    #item.image = fixture_file_upload("/files/test_image.png")
-    #item.save
-    @order_destination = FactoryBot.build(:order_destination, user_id: user.id)#, item_id: item.id)
+    item = FactoryBot.build(:item)
+    item.image = fixture_file_upload("/files/test_image.png")
+    item.save
+    @order_destination = FactoryBot.build(:order_destination, user_id: user.id, item_id: item.id)
   end
 
 
@@ -82,6 +82,12 @@ RSpec.describe OrderDestination, type: :model do
         @order_destination.item_id = nil
         @order_destination.valid?
         expect(@order_destination.errors.full_messages).to include("Item can't be blank")
+      end
+
+      it 'クレジットカートのトークンが空では購入できない' do
+        @order_destination.token = ""
+        @order_destination.valid?
+        expect(@order_destination.errors.full_messages).to include("Token can't be blank")
       end
     end
   end

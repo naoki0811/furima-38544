@@ -6,6 +6,7 @@ FactoryBot.define do
     address { '1-1' }
     build { '任意' }
     phone_number { '19012345678' }
+    token {"tok_abcdefghijk00000000000000000"}
   end
 end
 
