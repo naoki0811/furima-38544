@@ -15,6 +15,11 @@ RSpec.describe OrderDestination, type: :model do
       it "フォームに情報が正しく入力されていれば購入できる" do
         expect(@order_destination).to be_valid
       end
+
+      it '建物名が空でも購入できる' do
+        @order_destination.build = ""
+        expect(@order_destination).to be_valid
+      end
     end
 
     context '商品購入ができない時' do
@@ -32,6 +37,12 @@ RSpec.describe OrderDestination, type: :model do
 
       it 'prefecture_id が空では購入できない' do
         @order_destination.prefecture_id  = ''
+        @order_destination.valid?
+        expect(@order_destination.errors.full_messages).to include("Prefecture can't be blank")
+      end
+
+      it 'prefecture_idが選択されていなかったら購入できない' do
+        @order_destination.prefecture_id = 0
         @order_destination.valid?
         expect(@order_destination.errors.full_messages).to include("Prefecture can't be blank")
       end
