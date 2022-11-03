@@ -2,7 +2,6 @@ class OrderDestination
   include ActiveModel::Model
   attr_accessor :post_code , :prefecture_id, :city, :address, :build, :phone_number, :user_id, :item_id, :order_id, :token
   validates :prefecture_id, numericality: {other_than: 0, message: "can't be blank"}
-  validates :token, presence: true
   
   with_options presence: true do
     validates :item_id
