@@ -1,0 +1,43 @@
+// Place all the styles related to the comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.comment-form{
+  display: flex;
+}
+
+.comment-text{
+  display: block;
+  margin-top: 20px;
+}
+
+.comment-submit{
+  background-color: #3CCACE;
+  color: #fff;
+  border: none;
+}
+
+.comment{
+  display: flex;
+}
+
+.comment p{
+   margin: 0;
+}
+
+.user-info{
+  color: gray;
+  font-weight: bold;
+}
+
+.comment-destroy {
+  color: #7B3CFF;
+  background-color: #fff;
+  margin-left: 10px;
+}
+
+.comment-destroy:hover {
+  color: #fff;
+  background-color: #FF0000;
+}
