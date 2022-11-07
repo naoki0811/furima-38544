@@ -86,15 +86,15 @@
         <p><%= comment.text%></p>
         <% if user_signed_in? && current_user.id == comment.user_id %>
         <p><%=link_to "削除", item_comment_path(comment.item.id), method: :delete, class: "comment-destroy" %></p>
+        <% end %>
       </div>
-      <% end %>
     <% end %>
   </div>
-
+  
+  <% if user_signed_in? %>
   <div class="comment-box">
-    <% if user_signed_in? %>
-      <%= form_with model: [@item, @comment], id: "comment-form" do |f| %>
-        <%= f.text_area :text , class: "comment-text"%>
+    <%= form_with model: [@item, @comment], id: "comment-form" do |f| %>
+      <%= f.text_area :text , class: "comment-text"%>
       <div>
         <p class="comment-warn">
           相手のことを考え丁寧なコメントを心がけましょう。
@@ -102,13 +102,13 @@
           不快な言葉遣いなどは利用制限や退会処分となることがあります。
         </p>
       </div>
-        <button type="submit" class="comment-btn">
+      <button type="submit" class="comment-btn">
         <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
         <%= f.submit "コメントをする", class: "comment-submit" %>
-        </button>
-      <% end %>
+      </button>
     <% end %>
   </div>
+  <% end %> 
 
 
   <div class="links">
