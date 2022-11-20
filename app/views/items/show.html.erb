@@ -85,7 +85,7 @@
         <p class="user-info"><%= comment.user.nickname %>： </p>
         <p><%= comment.text%></p>
         <% if user_signed_in? && current_user.id == comment.user_id %>
-        <p><%=link_to "削除", item_comment_path(comment.item.id), method: :delete, class: "comment-destroy" %></p>
+        <p><%=link_to "削除", item_comment_path(comment.item.id, comment.id), method: :delete, class: "comment-destroy" %></p>
         <% end %>
       </div>
     <% end %>

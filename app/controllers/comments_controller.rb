@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    comment =Comment.find_by(params[:item_id])
+    comment =Comment.find_by(id: params[:id],item_id: params[:item_id])
     comment.destroy
     redirect_to item_path(params[:item_id])
   end
